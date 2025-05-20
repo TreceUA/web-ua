@@ -7,6 +7,8 @@ import Swal from "sweetalert2";
 import { getCSSVariable } from '../../Utils';
 import styles from "./Profile.module.css";
 
+const apiUrl = process.env.REACT_APP_API_URL; // URL de la API
+
 function Profile() {
   const [previewUrl, setPreviewUrl] = useState("");
   const [formData, setFormData] = useState({
@@ -32,7 +34,7 @@ function Profile() {
       }
 
       try {
-        const response = await fetch(`http://localhost:5000/api/users/${userId}`);
+        const response = await fetch(`${apiUrl}/api/users/${userId}`);
         const data = await response.json();
         setFormData({
           name: data.name || "",
@@ -101,7 +103,7 @@ function Profile() {
     }
 
     try {
-      const response = await fetch(`http://localhost:5000/api/users/${userId}`, {
+      const response = await fetch(`${apiUrl}/api/users/${userId}`, {
         method: "PUT",
         body: formDataToSend,
       });
@@ -160,7 +162,7 @@ function Profile() {
     if (!result.isConfirmed) return;
   
     try {
-      const res = await fetch(`http://localhost:5000/api/users/${userId}`);
+      const res = await fetch(`${apiUrl}/api/users/${userId}`);
       if (!res.ok) {
         const text = await res.text();
         throw new Error(`Error ${res.status}: ${text}`);
@@ -217,7 +219,7 @@ function Profile() {
             <div className={styles["pic-name-email-input"]}>
               <div className={styles["profile-pic-container"]}>
                 <img
-                 src={previewUrl || `http://localhost:5000/api/users/${userId}/foto`}
+                 src={previewUrl || `${apiUrl}/api/users/${userId}/foto`}
                   alt="Foto de perfil"
                   className={styles["profile-pic"]}
                   onError={(e) => {e.target.src = '/profile.png';}}

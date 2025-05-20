@@ -7,6 +7,8 @@ import { getCSSVariable } from '../../Utils';
 import Lottie from "lottie-react";
 import loginAnimation from "../../assets/manchas.json"; 
 
+const apiUrl = process.env.REACT_APP_API_URL; // URL de la API
+
 /* Estilos */
 import styles from "./Register.module.css";
 
@@ -36,7 +38,7 @@ function Register() {
     }
 
     try {
-      const response = await fetch("http://localhost:5000/api/users", {
+      const response = await fetch("${apiUrl}/api/users", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

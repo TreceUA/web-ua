@@ -1,5 +1,8 @@
+import { Const } from "three/src/nodes/TSL.js";
 import Model from "../Model/Model";
 import styles from "./ModelGrid.module.css";
+
+const apiUrl = process.env.REACT_APP_API_URL; // URL de la API
 
 function ModelGrid({ publicaciones = [], mostrarBotonDescarga = false, mostrarBotonEditar = false, mostrarBotonBorrar = false, mostrarBotonQuitarDescarga = false , onDelete, onRemoveDownload }) {  // Inicializamos publicaciones como un arreglo vacío
     return (
@@ -11,7 +14,7 @@ function ModelGrid({ publicaciones = [], mostrarBotonDescarga = false, mostrarBo
                         _id={pub._id}
                         titulo={pub.titulo}
                         autor={pub.usuario?.name || "Desconocido"}
-                        imagen={`http://localhost:5000/api/publicaciones/${pub._id}/miniatura`} 
+                        imagen={`${apiUrl}/api/publicaciones/${pub._id}/miniatura`} 
                         likes={pub.likes}
                         mostrarBotonDescarga={mostrarBotonDescarga}
                         mostrarBotonEditar={mostrarBotonEditar}

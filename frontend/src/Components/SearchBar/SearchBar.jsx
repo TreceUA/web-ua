@@ -5,6 +5,7 @@ import { faSearch, faFilter, faStar } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
+const apiUrl = process.env.REACT_APP_API_URL; // URL de la API
 
 export default function SearchBar() {
 
@@ -25,7 +26,7 @@ export default function SearchBar() {
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/categorias'); // Reemplaza si tu endpoint es otro
+      const response = await fetch('${apiUrl}/api/categorias'); // Reemplaza si tu endpoint es otro
       const data = await response.json();
   
       if (data && Array.isArray(data)) {

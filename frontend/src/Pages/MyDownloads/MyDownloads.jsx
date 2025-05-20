@@ -3,6 +3,8 @@ import { Button, ModelGrid, ProfileMenu, UpButton } from '../../Components';
 import styles from "./MyDownloads.module.css";
 import { useAuth } from "../../Context";
 
+const apiUrl = process.env.REACT_APP_API_URL; // URL de la API
+
 function MyDownloads() {
   const [descargas, setDescargas] = useState([]);
   const [visibleCount, setVisibleCount] = useState(4);
@@ -25,7 +27,7 @@ function MyDownloads() {
       return;
     }
 
-    fetch(`http://localhost:5000/api/users/${userId}/descargas`)
+    fetch(`${apiUrl}/api/users/${userId}/descargas`)
       .then(response => {
         if (!response.ok) {
           return response.json().then(errData => {

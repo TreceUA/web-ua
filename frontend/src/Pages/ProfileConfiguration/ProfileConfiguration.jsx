@@ -4,6 +4,8 @@ import Swal from 'sweetalert2';
 import { useAuth } from "../../Context";
 import { applyUserPreferences, getCSSVariable } from '../../Utils';
 
+const apiUrl = process.env.REACT_APP_API_URL; // URL de la API
+
 /* Estilos */
 import styles from "./ProfileConfiguration.module.css";
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
@@ -23,7 +25,7 @@ function ProfileConfiguration() {
     (async () => {
       try {
         console.log("Fetching user:", userId);
-        const res = await fetch(`http://localhost:5000/api/users/${userId}`);
+        const res = await fetch(`${apiUrl}/api/users/${userId}`);
         console.log("GET /api/users status:", res.status, "ok?", res.ok);
 
         if (!res.ok) {
@@ -96,7 +98,7 @@ function ProfileConfiguration() {
     if (result.isConfirmed) {
       try {
         console.log("PUT payload:", updates);
-        const res = await fetch(`http://localhost:5000/api/users/${userId}`, {
+        const res = await fetch(`${apiUrl}/api/users/${userId}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(updates)
@@ -165,7 +167,7 @@ function ProfileConfiguration() {
     }).then(async result => {
       if (result.isConfirmed) {
         try {
-          const res = await fetch(`http://localhost:5000/api/users/${userId}`, { method: 'DELETE' });
+          const res = await fetch(`${apiUrl}/api/users/${userId}`, { method: 'DELETE' });
           console.log("DELETE /api/users status:", res.status, "ok?", res.ok);
           if (!res.ok) throw new Error();
 

@@ -7,6 +7,8 @@ import { faSignInAlt, faUserPlus, faBars , faUser, faFolder, faDownload, faCog, 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAuth } from "../../Context";  
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 export default function Header( ) { //{ isAuth, setIsAuth } antes lo usaba
     const [menuOpen, setMenuOpen] = useState(false);
     const [profileMenuOpen, setProfileMenuOpen] = useState(false);
@@ -22,7 +24,7 @@ export default function Header( ) { //{ isAuth, setIsAuth } antes lo usaba
             if (!userId) return;
 
             try {
-                const response = await fetch(`http://localhost:5000/api/users/${userId}`);
+                const response = await fetch(`${apiUrl}/api/users/${userId}`);
                 const data = await response.json();
                 setFoto(data.foto || "");
             } catch (error) {
@@ -86,7 +88,7 @@ export default function Header( ) { //{ isAuth, setIsAuth } antes lo usaba
                     <Button  variant="headerButtonWhite" label="Subir asset" icon={faArrowUpFromBracket} onClickFunction={() => console.log("Redirigiendo a subir asset...")} to="/post-form" role="link"/> 
 
                     <div className={styles.drop} onClick={() => setProfileMenuOpen(!profileMenuOpen)} ref={profileButtonRef}>
-                        <img alt="foto de perfil" src={`http://localhost:5000/api/users/${userId}/foto`} onError={(e) => {e.target.src = '/profile.png';}}/>
+                        <img alt="foto de perfil" src={`${apiUrl}/api/users/${userId}/foto`} onError={(e) => {e.target.src = '/profile.png';}}/>
                         <FontAwesomeIcon icon={faCaretDown} />
                     </div>
 

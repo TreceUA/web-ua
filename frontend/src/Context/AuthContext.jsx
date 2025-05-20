@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import { applyUserPreferences } from '../Utils';
 
+const apiUrl = process.env.REACT_APP_API_URL;
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
@@ -13,7 +14,7 @@ export function AuthProvider({ children }) {
     setUserId(id);
 
     try {
-      const res = await fetch(`http://localhost:5000/api/users/${id}`);
+      const res = await fetch(`${apiUrl}/api/users/${id}`);
       if (!res.ok) throw new Error();
       const user = await res.json();
       applyUserPreferences({ theme: user.theme, fontSize: user.fontSize });
@@ -29,7 +30,7 @@ export function AuthProvider({ children }) {
   const logout = () => {
     sessionStorage.removeItem('userId');
     setUserId(null);
-    window.location.href = "http://localhost:3000/login"
+    window.location.href = "${apiUrl}/login"
   };
 
   // useEffect para recuperar el userId al cargar

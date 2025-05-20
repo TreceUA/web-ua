@@ -3,6 +3,9 @@ import { Button, ModelGrid, ProfileMenu, UpButton } from "../../Components";
 import styles from "./MyAssets.module.css";
 import { useAuth } from "../../Context";
 
+
+const apiUrl = process.env.REACT_APP_API_URL; // URL de la API
+
 function MyAssets() {
   const [publicaciones, setPublicaciones] = useState([]);
   const { userId } = useAuth();
@@ -25,7 +28,7 @@ function MyAssets() {
     setIsLoading(true);
     setError(null);
     try {
-      const res = await fetch(`http://localhost:5000/api/publicaciones/usuario/${userId}`);
+      const res = await fetch(`${apiUrl}/api/publicaciones/usuario/${userId}`);
       if (!res.ok) {
            let errorMsg = res.statusText;
            try {

@@ -8,6 +8,8 @@ import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import Swal from "sweetalert2";
 import styles from "./Detail.module.css";
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 function Detail() {
   const { id } = useParams();
   const [publicacion, setPublicacion] = useState(null);
@@ -21,7 +23,7 @@ function Detail() {
 
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/publicaciones/${id}`)
+    fetch(`${apiUrl}/api/publicaciones/${id}`)
       .then(res => res.json())
       .then(data => {
         setPublicacion(data);
@@ -30,7 +32,7 @@ function Detail() {
         const archivo = data.archivos?.[0];
         if (archivo && archivo.extension === "txt") {
         setEsArchivoTxt(true);
-        setArchivoTxtUrl(`http://localhost:5000/api/publicaciones/${archivo.id}/archivo`);
+        setArchivoTxtUrl(`${apiUrl}/api/publicaciones/${archivo.id}/archivo`);
       }
       })
       .catch(err => {
@@ -40,7 +42,7 @@ function Detail() {
   }, [id]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/publicaciones/${id}/comentarios`)
+    fetch(`${apiUrl}/api/publicaciones/${id}/comentarios`)
       .then(res => res.json())
       .then(data => setComentarios(data))
       .catch(err => console.error("Error al obtener comentarios:", err));
@@ -72,7 +74,7 @@ function Detail() {
     }
     if (!usuarioId || !nuevoComentario.trim()) return;
   
-    fetch("http://localhost:5000/api/comentarios", {
+    fetch("${apiUrl}/api/comentarios", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -86,7 +88,7 @@ function Detail() {
       .then(data => {
         setNuevoComentario("");
         // 👇 Aquí volvemos a pedir todos los comentarios desde el backend
-        fetch(`http://localhost:5000/api/publicaciones/${id}/comentarios`)
+        fetch(`${apiUrl}/api/publicaciones/${id}/comentarios`)
           .then(res => res.json())
           .then(data => setComentarios(data))
           .catch(err => console.error("Error al recargar comentarios:", err));
@@ -110,7 +112,7 @@ function Detail() {
        return;
      }
       
-      const response = await fetch(`http://localhost:5000/api/publicaciones/${id}/descargar/${userId}`);
+      const response = await fetch(`${apiUrl}/api/publicaciones/${id}/descargar/${userId}`);
   
       if (!response.ok) {
         throw new Error("Error en la descarga");
@@ -151,10 +153,10 @@ function Detail() {
           {publicacion.archivos?.length > 0 ? (
         (() => {
           const archivo = publicacion.archivos[0];
-          const url = `http://localhost:5000/api/publicaciones/${archivo.id}/archivo`;
+          const url = `${apiUrl}/api/publicaciones/${archivo.id}/archivo`;
           const ext = archivo.extension;
 
-          if (ext === "glb") return       <ModelViewer modelUrl={`http://localhost:5000/api/publicaciones/${id}/modelo`} />;
+          if (ext === "glb") return       <ModelViewer modelUrl={`${apiUrl}/api/publicaciones/${id}/modelo`} />;
           if (["jpg", "jpeg", "png", "svg"].includes(ext)) return <ImageViewer imageUrl={url} />;
           if (ext === "mp4") return <VideoPlayer videoUrl={url} />;
           if (ext === "mp3") return <AudioPlayer audioUrl={url} />;
@@ -185,7 +187,7 @@ function Detail() {
           <div className={styles["author"]}>
           <img
             className={styles["author-image"]}
-            src={`http://localhost:5000/api/users/${publicacion.usuario?._id}/foto`}
+            src={`${apiUrl}/api/users/${publicacion.usuario?._id}/foto`}
             alt="Imagen del autor"
             onError={(e) => { e.target.src = '/profile.png'; }}
           />
@@ -206,7 +208,7 @@ function Detail() {
               icon={faHeart}
               disabled={liked}
               onClick={() => {
-                fetch(`http://localhost:5000/api/publicaciones/${id}/like`, { method: "PATCH" })
+                fetch(`${apiUrl}/api/publicaciones/${id}/like`, { method: "PATCH" })
                   .then(res => res.json())
                   .then(() => {
                     setLikes(prev => Math.min(prev + 1, 5));
@@ -276,7 +278,7 @@ function Detail() {
                   autor={comentario.usuario?.name || "Anónimo"}
                   mensaje={comentario.mensaje}
                   fecha={new Date(comentario.fecha).toLocaleString()}
-                  foto={`http://localhost:5000/api/users/${comentario.usuario?._id}/foto`}
+                  foto={`${apiUrl}/api/users/${comentario.usuario?._id}/foto`}
                 />
               ))
             )}

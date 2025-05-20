@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 
 import styles from "./ProfileMenu.module.css";
 
+const apiUrl = process.env.REACT_APP_API_URL; // URL de la API
+
 export default function ProfileMenu() {
     const { userId } = useAuth();
     const [userData, setUserData] = useState({
@@ -21,15 +23,15 @@ export default function ProfileMenu() {
   
           try {
               // Petición para datos básicos del usuario
-              const resUser = await fetch(`http://localhost:5000/api/users/${userId}`);
+              const resUser = await fetch(`${apiUrl}/api/users/${userId}`);
               const dataUser = await resUser.json();
   
               // Petición para publicaciones subidas
-              const resUploads = await fetch(`http://localhost:5000/api/publicaciones/usuario/${userId}`);
+              const resUploads = await fetch(`${apiUrl}/api/publicaciones/usuario/${userId}`);
               const dataUploads = await resUploads.json();
   
               // Petición para descargas
-              const resDownloads = await fetch(`http://localhost:5000/api/users/${userId}/descargas`);
+              const resDownloads = await fetch(`${apiUrl}/api/users/${userId}/descargas`);
               const dataDownloads = await resDownloads.json();
   
               setUserData({
@@ -51,7 +53,7 @@ export default function ProfileMenu() {
         <div className={styles.profilemenu}>
             <div className={styles.profilebox}>
                 <div className={styles.photoname}>
-                    <img alt="Foto de perfil" src={`http://localhost:5000/api/users/${userId}/foto`} onError={(e) => {e.target.src = '/profile.png';}}></img>
+                    <img alt="Foto de perfil" src={`${apiUrl}/api/users/${userId}/foto`} onError={(e) => {e.target.src = '/profile.png';}}></img>
                     <p>{userData.name}</p>
                 </div>
                 <div className={styles.uploadsdownloads}>

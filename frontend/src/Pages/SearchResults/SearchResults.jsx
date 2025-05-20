@@ -6,6 +6,8 @@ import { useSearchParams, useNavigate, Link } from "react-router-dom";
 import styles from "./SearchResults.module.css";
 import Marquee from "react-fast-marquee";
 
+const apiUrl = process.env.REACT_APP_API_URL; // URL de la API
+
 function SearchResults() {
     const [categories, setCategories] = useState([]);
     const [publicaciones, setPublicaciones] = useState([]);
@@ -51,7 +53,7 @@ function SearchResults() {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await fetch('http://localhost:5000/api/categorias', {
+                const response = await fetch('${apiUrl}/api/categorias', {
                     headers: {
                         'Cache-Control': 'no-cache',
                         'Pragma': 'no-cache',
@@ -78,7 +80,7 @@ function SearchResults() {
             if (selectedStars) params.append("ratings", selectedStars);
      
             try {
-                const response = await fetch(`http://localhost:5000/api/publicaciones?${params.toString()}`);
+                const response = await fetch(`${apiUrl}/api/publicaciones?${params.toString()}`);
                 const data = await response.json();
                 setPublicaciones(data);
             } catch (error) {
@@ -89,7 +91,7 @@ function SearchResults() {
     }, [searchParams]);
     
     useEffect(() => {
-        fetch('http://localhost:5000/api/publicaciones')
+        fetch('${apiUrl}/api/publicaciones')
             .then(response => response.json())
             .then(data => setsliderPublicaciones(data))
             .catch(error => console.error('Error al traer las publicaciones:', error));
@@ -240,7 +242,7 @@ function SearchResults() {
                     {[...sliderPublicaciones, ...sliderPublicaciones].map((pub, i) => (
                         <img
                             key={i}
-                            src={`http://localhost:5000/api/publicaciones/${pub._id}/miniatura`} 
+                            src={`${apiUrl}/api/publicaciones/${pub._id}/miniatura`} 
                             alt={`preview ${i}`}
                             style={{
                                 height: "100px",

@@ -6,13 +6,15 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { getCSSVariable } from "../../Utils";
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 function Model({ _id, titulo, autor, imagen, mostrarBotonDescarga= false, mostrarBotonEditar = false, mostrarBotonBorrar = false, mostrarBotonQuitarDescarga = false, onDelete, onRemoveDownload }) {
   const [likes, setLikes] = useState(0);
   const [liked, setLiked] = useState(false);
 
   useEffect(() => {
     // Obtener cantidad actual de likes al montar
-    fetch(`http://localhost:5000/api/publicaciones/${_id}`)
+    fetch(`${apiUrl}/api/publicaciones/${_id}`)
       .then(res => res.json())
       .then(data => setLikes(data.likes || 0))
       .catch(err => console.error("Error al obtener likes:", err));
@@ -44,7 +46,7 @@ function Model({ _id, titulo, autor, imagen, mostrarBotonDescarga= false, mostra
     e.preventDefault();
     if (liked) return;
 
-    fetch(`http://localhost:5000/api/publicaciones/${_id}/like`, {
+    fetch(`${apiUrl}/api/publicaciones/${_id}/like`, {
       method: "PATCH"
     })
       .then(res => res.json())
@@ -69,7 +71,7 @@ function Model({ _id, titulo, autor, imagen, mostrarBotonDescarga= false, mostra
         }
       });
 
-      const response = await fetch(`http://localhost:5000/api/publicaciones/${_id}/descargar/${userId}`);
+      const response = await fetch(`${apiUrl}/api/publicaciones/${_id}/descargar/${userId}`);
 
       if (!response.ok) {
           let errorMsg = "Error en la descarga";
@@ -130,7 +132,7 @@ function Model({ _id, titulo, autor, imagen, mostrarBotonDescarga= false, mostra
   
       if (result.isConfirmed) {  
         const response = await fetch(
-          `http://localhost:5000/api/publicaciones/${_id}`,
+          `${apiUrl}/api/publicaciones/${_id}`,
           {
             method: "DELETE",
           }
@@ -194,7 +196,7 @@ function Model({ _id, titulo, autor, imagen, mostrarBotonDescarga= false, mostra
       if (result.isConfirmed) {
 
         const response = await fetch(
-          `http://localhost:5000/api/users/${userId}/descargas/${_id}`,
+          `${apiUrl}/api/users/${userId}/descargas/${_id}`,
           {
             method: "DELETE",
           }

@@ -6,6 +6,8 @@ import { useState } from 'react';
 import { useRef } from 'react';
 import { faCheck, faRotateLeft} from "@fortawesome/free-solid-svg-icons";
 
+const apiUrl = process.env.REACT_APP_API_URL; // URL de la API
+
 function Support() {
   const fileInputRef = useRef(null);
   const selectRef = useRef(null);
@@ -105,7 +107,7 @@ function Support() {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/support/issues', {
+      const response = await fetch(`${apiUrl}/api/support/issues`, {
         method: 'POST',
         body: formData,
       });

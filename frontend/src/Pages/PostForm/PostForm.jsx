@@ -7,6 +7,7 @@ import { getCSSVariable } from "../../Utils";
 import Swal from "sweetalert2";
 import styles from "./PostForm.module.css";
 
+const apiUrl = process.env.REACT_APP_API_URL; // URL de la API
 
 function PostForm() {
   const { id } = useParams();
@@ -239,8 +240,8 @@ function PostForm() {
 
     try {
       const endpoint = isEditMode
-        ? `http://localhost:5000/api/publicaciones/${id}`
-        : `http://localhost:5000/api/publicaciones/${userId}`;
+        ? `${apiUrl}/api/publicaciones/${id}`
+        : `${apiUrl}/api/publicaciones/${userId}`;
   
       const response = await fetch(endpoint, {
         method: isEditMode ? "PUT" : "POST",
@@ -320,7 +321,7 @@ function PostForm() {
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/categorias');
+      const response = await fetch('${apiUrl}0/api/categorias');
       const data = await response.json();
 
       if (Array.isArray(data)) {
@@ -340,7 +341,7 @@ function PostForm() {
 
   const fetchPost = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/api/publicaciones/${id}`);
+      const res = await fetch(`${apiUrl}/api/publicaciones/${id}`);
       const data = await res.json();
 
       const userId = sessionStorage.getItem("userId");

@@ -6,6 +6,8 @@ import { getCSSVariable } from '../../Utils';
 import Swal from 'sweetalert2';
 import styles from "./Home.module.css";
 
+const apiUrl = process.env.REACT_APP_API_URL; // URL de la API
+
 function Home() {
     const [categories, setCategories] = useState([]);
     const [publicaciones, setPublicaciones] = useState([]);
@@ -19,14 +21,14 @@ function Home() {
     };
 
     useEffect(() => {
-        fetch('http://localhost:5000/api/categorias')
+        fetch('${apiUrl}/api/categorias')
             .then(response => response.json())
             .then(data => setCategories(data))
             .catch(error => console.error('Error al traer las categorías:', error));
     }, []);
 
     useEffect(() => {
-        fetch('http://localhost:5000/api/publicaciones')
+        fetch('${apiUrl}/api/publicaciones')
             .then(response => response.json())
             .then(data => setPublicaciones(data))
             .catch(error => console.error('Error al traer las publicaciones:', error));
@@ -123,7 +125,7 @@ function Home() {
                 </header>
                 <div className={styles["categories"]}>
                     {categories.map((category) => (
-                        <Category key={category._id} id={category._id} nombre={category.nombre} fotoURL={`http://localhost:5000/api/categorias/foto/${category.fotoId}`} />
+                        <Category key={category._id} id={category._id} nombre={category.nombre} fotoURL={`${apiUrl}/api/categorias/foto/${category.fotoId}`} />
                     ))}
                 </div>
                 {/* <footer className={styles["category-footer"]}>
@@ -156,7 +158,7 @@ function Home() {
                {[...publicaciones, ...publicaciones].map((pub, i) => (
                     <img
                         key={i}
-                        src={`http://localhost:5000/api/publicaciones/${pub._id}/miniatura`} 
+                        src={`${apiUrl}/api/publicaciones/${pub._id}/miniatura`} 
                         onError={(e) => { e.target.src = '/no-image.webp'; }}
                         alt={`preview ${i}`}
                         style={{

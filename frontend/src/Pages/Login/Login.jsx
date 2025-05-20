@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 import Lottie from "lottie-react";
 import loginAnimation from "../../assets/burbuja.json"; 
 
+const apiUrl = process.env.REACT_APP_API_URL; // URL de la API
 
 /* Estilos */
 import styles from "./Login.module.css";
@@ -38,7 +39,7 @@ function Login() {
    }
     
     try {
-      const response = await fetch("http://localhost:5000/api/login", {
+      const response = await fetch("${apiUrl}/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
