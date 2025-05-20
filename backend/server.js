@@ -19,21 +19,6 @@ let categoriasCollection;
 let comentariosCollection;
 let supportIssuesCollection;
 
-// Conectar a MongoDB y crear el bucket de GridFS
-mongoClient.connect().then(client => {
-    const database = client.db("miBaseDeDatos");
-    bucket = new GridFSBucket(database, { bucketName: "archivos" });
-    publicacionesDB = database.collection("publicaciones");
-    usersCollection = database.collection("users");
-    categoriasCollection = database.collection("categorias");
-    comentariosCollection = database.collection("comentarios");
-    supportIssuesCollection = database.collection("supportIssues");
-
-    app.listen(PORT, () => {
-        console.log(`Servidor escuchando en puerto ${PORT}`);
-    });
-}).catch(console.error);
-
 // Configuración de CORS
 const cors = require("cors");
 
@@ -1209,4 +1194,17 @@ app.get("/api/support/issues/attachment/:fileId", async (req, res) => {
 });
 
 
+// Conectar a MongoDB y crear el bucket de GridFS
+mongoClient.connect().then(client => {
+    const database = client.db("miBaseDeDatos");
+    bucket = new GridFSBucket(database, { bucketName: "archivos" });
+    publicacionesDB = database.collection("publicaciones");
+    usersCollection = database.collection("users");
+    categoriasCollection = database.collection("categorias");
+    comentariosCollection = database.collection("comentarios");
+    supportIssuesCollection = database.collection("supportIssues");
 
+    app.listen(PORT, () => {
+        console.log(`Servidor escuchando en puerto ${PORT}`);
+    });
+}).catch(console.error);
