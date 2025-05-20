@@ -8,11 +8,10 @@ import { getCSSVariable } from "../../Utils";
 import Swal from 'sweetalert2';
 import Lottie from "lottie-react";
 import loginAnimation from "../../assets/burbuja.json"; 
-
-const apiUrl = process.env.REACT_APP_API_URL; // URL de la API
-
 /* Estilos */
 import styles from "./Login.module.css";
+const apiUrl = process.env.REACT_APP_API_URL; // URL de la API
+
 
 function Login() {
   const [formData, setFormData] = useState({ name: "", password: "" });

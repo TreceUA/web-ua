@@ -4,11 +4,12 @@ import Swal from 'sweetalert2';
 import { useAuth } from "../../Context";
 import { applyUserPreferences, getCSSVariable } from '../../Utils';
 
-const apiUrl = process.env.REACT_APP_API_URL; // URL de la API
-
 /* Estilos */
 import styles from "./ProfileConfiguration.module.css";
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
+
+const apiUrl = process.env.REACT_APP_API_URL; // URL de la API
+
 
 function ProfileConfiguration() {
   const { userId, logout } = useAuth();

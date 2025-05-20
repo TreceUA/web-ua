@@ -6,11 +6,10 @@ import Swal from "sweetalert2";
 import { getCSSVariable } from '../../Utils';
 import Lottie from "lottie-react";
 import loginAnimation from "../../assets/manchas.json"; 
-
-const apiUrl = process.env.REACT_APP_API_URL; // URL de la API
-
 /* Estilos */
 import styles from "./Register.module.css";
+const apiUrl = process.env.REACT_APP_API_URL; // URL de la API
+
 
 function Register() {
   const [formData, setFormData] = useState({ email: "", name: "", password: "", password_rep: "" });
