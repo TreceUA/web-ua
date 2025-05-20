@@ -23,7 +23,17 @@ let supportIssuesCollection;
 const cors = require("cors");
 
 const corsOptions = {
-    origin: ['https://web-ua-vzmx-89op79mvg-treceuas-projects.vercel.app/', 'http://localhost:3000'],
+    origin: (origin, callback) => {
+        if (
+            !origin || // permite peticiones desde herramientas como Postman
+            origin.includes("vercel.app") ||
+            origin === "http://localhost:3000"
+        ) {
+            callback(null, true);
+        } else {
+            callback(new Error("No autorizado por CORS"));
+        }
+    },
     optionsSuccessStatus: 200,
     exposedHeaders: ['Content-Disposition'],
 };
