@@ -26,7 +26,7 @@ export default function SearchBar() {
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch('${apiUrl}/api/categorias'); // Reemplaza si tu endpoint es otro
+      const response = await fetch(`${apiUrl}/api/categorias`); // Reemplaza si tu endpoint es otro
       const data = await response.json();
   
       if (data && Array.isArray(data)) {

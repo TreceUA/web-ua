@@ -11,7 +11,7 @@ function Categories() {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-        fetch('${apiUrl}/api/categorias')
+        fetch(`${apiUrl}/api/categorias`)
             .then(response => response.json())
             .then(data => setCategories(data))
             .catch(error => console.error('Error al traer las categorías:', error));

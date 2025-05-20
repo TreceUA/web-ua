@@ -53,7 +53,7 @@ function SearchResults() {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await fetch('${apiUrl}/api/categorias', {
+                const response = await fetch(`${apiUrl}/api/categorias`, {
                     headers: {
                         'Cache-Control': 'no-cache',
                         'Pragma': 'no-cache',
@@ -91,7 +91,7 @@ function SearchResults() {
     }, [searchParams]);
     
     useEffect(() => {
-        fetch('${apiUrl}/api/publicaciones')
+        fetch(`${apiUrl}/api/publicaciones`)
             .then(response => response.json())
             .then(data => setsliderPublicaciones(data))
             .catch(error => console.error('Error al traer las publicaciones:', error));

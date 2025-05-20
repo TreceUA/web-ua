@@ -74,7 +74,7 @@ function Detail() {
     }
     if (!usuarioId || !nuevoComentario.trim()) return;
   
-    fetch("${apiUrl}/api/comentarios", {
+    fetch(`${apiUrl}/api/comentarios`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

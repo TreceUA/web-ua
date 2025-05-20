@@ -21,14 +21,14 @@ function Home() {
     };
 
     useEffect(() => {
-        fetch('${apiUrl}/api/categorias')
+        fetch(`${apiUrl}/api/categorias`)
             .then(response => response.json())
             .then(data => setCategories(data))
             .catch(error => console.error('Error al traer las categorías:', error));
     }, []);
 
     useEffect(() => {
-        fetch('${apiUrl}/api/publicaciones')
+        fetch(`${apiUrl}/api/publicaciones`)
             .then(response => response.json())
             .then(data => setPublicaciones(data))
             .catch(error => console.error('Error al traer las publicaciones:', error));
