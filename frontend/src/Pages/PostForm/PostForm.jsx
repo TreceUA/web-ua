@@ -321,7 +321,7 @@ function PostForm() {
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch(`${apiUrl}0/api/categorias`);
+      const response = await fetch(`${apiUrl}/api/categorias`);
       const data = await response.json();
 
       if (Array.isArray(data)) {
