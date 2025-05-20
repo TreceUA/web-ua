@@ -23,7 +23,7 @@ let supportIssuesCollection;
 const cors = require("cors");
 
 const corsOptions = {
-    origin: ['https://web-ua-vzmx-p0hscxfl9-treceuas-projects.vercel.app', 'http://localhost:3000'],
+    origin: ['https://web-ua-vzmx-89op79mvg-treceuas-projects.vercel.app', 'http://localhost:3000'],
     optionsSuccessStatus: 200,
     exposedHeaders: ['Content-Disposition'],
 };
