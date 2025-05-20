@@ -28,6 +28,10 @@ mongoClient.connect().then(client => {
     categoriasCollection = database.collection("categorias");
     comentariosCollection = database.collection("comentarios");
     supportIssuesCollection = database.collection("supportIssues");
+
+    app.listen(PORT, () => {
+        console.log(`Servidor escuchando en puerto ${PORT}`);
+    });
 }).catch(console.error);
 
 // Configuración de CORS
