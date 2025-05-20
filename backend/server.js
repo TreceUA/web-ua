@@ -1208,10 +1208,5 @@ app.get("/api/support/issues/attachment/:fileId", async (req, res) => {
     }
 });
 
-// Escuchar en el puerto definido
-app.listen(PORT, () => {
-    console.log(`Servidor escuchando en puerto ${PORT}`);
-});
-
 
 
