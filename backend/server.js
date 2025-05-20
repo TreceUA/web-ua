@@ -1,7 +1,8 @@
 'use strict'
 
 // Importar dependencias
-const PORT = 5000;
+require('dotenv').config();
+const PORT = process.env.PORT || 5000;
 const express = require("express");
 const logger = require("morgan");
 const { MongoClient, GridFSBucket, ObjectId } = require("mongodb");
@@ -10,7 +11,7 @@ const fs = require("fs");
 const archiver = require("archiver");
 const upload = multer({ dest: 'uploads/' });
 const path = require('path');
-const mongoClient = new MongoClient("mongodb://127.0.0.1:27017");
+const mongoClient = new MongoClient(process.env.MONGO_URI);
 let bucket;
 let publicacionesDB;
 let usersCollection;
@@ -33,9 +34,9 @@ mongoClient.connect().then(client => {
 const cors = require("cors");
 
 const corsOptions = {
-    origin: 'http://localhost:3000', // O la URL de tu frontend React
+    origin: process.env.CLIENT_ORIGIN || 'http://localhost:3000',
     optionsSuccessStatus: 200,
-    exposedHeaders: ['Content-Disposition'], // <--- ¡Añade esto!
+    exposedHeaders: ['Content-Disposition'],
 };
 
 const app = express();
