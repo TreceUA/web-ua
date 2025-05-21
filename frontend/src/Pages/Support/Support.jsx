@@ -221,7 +221,7 @@ function Support() {
 
             <div className={styles["support-buttons"]}>
               <Button
-                variant="grey"
+                variant="white"
                 label="Limpiar"
                 icon={faRotateLeft}
                 type="button"
