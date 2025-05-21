@@ -250,7 +250,7 @@ function Detail() {
                 key={index}
                 variant="grey-rounded"
                 label={cat}
-                to="/home"
+                
               />
             ))}
           </div>
