@@ -181,18 +181,10 @@ export default function SearchBar() {
                 <label>
                   <input
                     type="checkbox"
-                    value=".blend"
-                    checked={selectedFormats.includes(".blend")}
+                    value=".glb"
+                    checked={selectedFormats.includes(".glb")}
                     onChange={handleFormatChange}
-                  /> .blend
-                </label>
-                <label>
-                  <input
-                    type="checkbox"
-                    value=".OBJ"
-                    checked={selectedFormats.includes(".OBJ")}
-                    onChange={handleFormatChange}
-                  /> .OBJ
+                  /> .glb
                 </label>
                 <label>
                   <input
@@ -233,14 +225,6 @@ export default function SearchBar() {
                     checked={selectedFormats.includes(".txt")}
                     onChange={handleFormatChange}
                   /> .txt
-                </label>
-                <label>
-                  <input
-                    type="checkbox"
-                    value=".avi"
-                    checked={selectedFormats.includes(".avi")}
-                    onChange={handleFormatChange}
-                  /> .avi
                 </label>
               </section>
 
