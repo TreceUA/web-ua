@@ -292,8 +292,9 @@ export default function SearchBar() {
                     onChange={handleRatingChange}
                   />
                   <span className={styles["span"]}>
+                    <p>&gt;</p>
                     <FontAwesomeIcon icon={faStar} />
-                    <p>o más</p>
+                    
                   </span>
                 </label>
                 <label>
@@ -304,9 +305,9 @@ export default function SearchBar() {
                     onChange={handleRatingChange}
                   />
                   <span className={styles["span"]}>
+                    <p>&gt;</p>
                     <FontAwesomeIcon icon={faStar} />
                     <FontAwesomeIcon icon={faStar} />
-                    <p>o más</p>
                   </span>
                 </label>
                 <label>
@@ -317,10 +318,10 @@ export default function SearchBar() {
                     onChange={handleRatingChange}
                   />
                   <span className={styles["span"]}>
+                    <p>&gt;</p>
                     <FontAwesomeIcon icon={faStar} />
                     <FontAwesomeIcon icon={faStar} />
                     <FontAwesomeIcon icon={faStar} />
-                    <p>o más</p>
                   </span>
                 </label>
                 <label>
