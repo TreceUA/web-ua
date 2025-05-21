@@ -162,8 +162,7 @@ h2 {
   padding: 2em;
 
   > button {
-    padding: 2em;
-    width: 50%;
+    width: 20%;
   }
 }
 
@@ -211,6 +210,11 @@ h2 {
         font-size: var(--font-large);
         text-align: center;
       }
+    }
+  }
+  .model-footer {
+    > button {
+      width: 100%;
     }
   }
 }
