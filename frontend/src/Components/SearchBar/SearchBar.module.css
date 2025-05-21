@@ -3,7 +3,6 @@
   justify-content: space-between;
   align-items: center;
   gap: 10px;
-
 }
 
 .searchBar > div {
@@ -47,7 +46,7 @@
   padding-inline: 0.3em;
   width: 1em;
   height: 1em;
-  color:  black;
+  color: black;
   transition: color 0.2s ease-in-out;
 }
 
@@ -77,15 +76,12 @@
   width: 1.1em;
 }
 
-
 .searchBarWrapper {
   position: relative;
   align-items: center;
   display: flex;
   justify-content: center;
 }
-
-
 
 .searchBar input {
   border: none;
@@ -98,7 +94,7 @@
   content: "";
   position: absolute;
   top: -10px;
-  right: .5rem; /* ajústalo para que apunte al icono de filtro */
+  right: 0.5rem; /* ajústalo para que apunte al icono de filtro */
   border-width: 0 10px 10px 10px;
   border-style: solid;
   border-color: transparent transparent var(--medium-red) transparent;
@@ -115,7 +111,7 @@
   margin-top: 0.5rem;
   padding: 1.5rem;
   /* width: 300px; */
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   max-width: 60vw; /* máximo 40% del ancho de la pantalla */
   width: 500px; /* ancho ajustable al contenido */
   margin-left: 5em;
@@ -126,7 +122,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1rem; /* Espacio entre secciones */
-  justify-content: space-between;; /* Centra las secciones */
+  justify-content: space-between; /* Centra las secciones */
   width: 100%; /* Asegura que ocupe todo el ancho disponible */
 }
 
@@ -157,15 +153,14 @@ input[type="checkbox"] {
 
 .span {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   width: 50%;
   flex-wrap: nowrap;
 }
 
 .span p {
-  margin-left: .5em;
+  margin-left: 0.3em;
 }
-
 
 @media (min-width: 700px) {
   .searchBar > div {
@@ -178,4 +173,3 @@ input[type="checkbox"] {
     min-width: 10rem;
   }
 }
-
