@@ -300,7 +300,7 @@ function Model({ _id, titulo, autor, imagen, mostrarBotonDescarga= false, mostra
           <img
             className={styles["model-image"]}
             src={imagen || '/no-image.webp'}
-            alt="Imagen del modelo"
+            alt={titulo}
             onError={(e) => { e.target.src = '/no-image.webp'; }}
           />
         </header>

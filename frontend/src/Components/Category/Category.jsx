@@ -9,7 +9,7 @@ function Category({ id, nombre, fotoURL }) {
           <img
             className={styles["category-image"]}
             src={fotoURL || "no-image.webp"} // Usa imagen por defecto si no hay foto
-            alt={`Imagen de categoría ${nombre}`}
+            alt={`Categoria ${nombre}`}
             onError={(e) => {e.target.src = '/no-image.webp';}} 
           />
         </header>
