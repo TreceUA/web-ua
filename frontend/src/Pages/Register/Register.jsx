@@ -5,7 +5,7 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 import { getCSSVariable } from '../../Utils';
 import Lottie from "lottie-react";
-import loginAnimation from "../../assets/manchas.json"; 
+import loginAnimation from "../../assets/burbuja.json"; 
 /* Estilos */
 import styles from "./Register.module.css";
 const apiUrl = process.env.REACT_APP_API_URL; // URL de la API
