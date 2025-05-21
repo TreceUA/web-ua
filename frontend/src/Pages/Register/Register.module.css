@@ -1,138 +1,133 @@
 .login-main-container {
-    display: flex;
-    flex-direction: row;
-    min-height: 100vh; 
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
 
+  h1 {
+    font-size: var(--font-larger);
+    color: var(--white);
+  }
 
-    h1 {
-        font-size: var(--font-larger);
-        color: var(--white);
+  a {
+    font-size: var(--font-medium);
+  }
+
+  > .left-section,
+  .right-section {
+    display: inherit;
+    flex-direction: column;
+    padding-block: 5rem;
+    flex: 1;
+    align-items: center;
+    justify-content: center; /* Centra verticalmente el contenido */
+  }
+
+  > .left-section {
+    /* padding-inline: 12rem; */
+    padding-inline: 2rem;
+    gap: 1.25rem;
+    background-color: var(--dark-grey);
+
+    > * {
+      max-width: 600px; /* Para que no sea demasiado grande */
+      width: 100%; /* Para que ocupe el máximo permitido */
     }
 
-    a {
-        font-size: var(--font-medium);
+    > h1 {
+      font-size: var(--font-larger);
+      color: var(--white);
+      margin: 0;
+      margin-top: 1rem;
     }
 
-    > .left-section, .right-section {
-        display: inherit;
-        flex-direction: column;
-        padding-block: 5rem;
-        flex: 1;
-        align-items: center;
-        justify-content: center; /* Centra verticalmente el contenido */
+    > small {
+      color: var(--white);
+      font-weight: bold;
+      margin-block: 0.5rem;
     }
 
-    > .left-section {
-        /* padding-inline: 12rem; */
-        padding-inline: 2rem; 
-        gap: 1.25rem;
-        background-color: var(--dark-grey);
+    > form {
+      display: inherit;
+      flex-direction: column;
+      gap: 2rem;
 
-        > * {
-            max-width: 600px; /* Para que no sea demasiado grande */
-            width: 100%; /* Para que ocupe el máximo permitido */
-        }
+      label {
+        font-size: var(--font-large);
+      }
 
-        > h1 {
-            font-size: var(--font-larger);
-            color: var(--white);
-            margin: 0;
-            margin-top: 1rem;
-        }
+      input {
+        font-size: var(--font-small);
+      }
 
-        > small {
-            color: var(--white);
-            font-weight: bold;
-            margin-block: 0.5rem;
-        }
-
-        > form  {
-            display: inherit;
-            flex-direction: column;
-            gap: 2rem;
-
-            label {
-                font-size: var(--font-large);
-            }
-
-            input {
-                font-size: var(--font-small);
-            }
-
-            > div:last-child {
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-                gap: 1rem;
-                font-size: var(--font-medium);
-            }
-        }
-    }
-
-    > .right-section {
+      > div:last-child {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
         gap: 1rem;
-        /* padding-inline: 6rem; */
-        /*background: linear-gradient(90deg, var(--dark-red), var(--medium-red));
-        background-image: url("../../../public/bannner2.png");
-        background-size: cover;  /* Cubre todo el contenedor */
-        /*background-position: left; /* Centra la imagen */
-        /*background-repeat: no-repeat; /* Evita repeticiones */
-        position: relative;
-        overflow: hidden;
-        padding: 0;
-
-        > img {
-            /* width: 20rem; */
-            width: 50%;
-            height: auto;
-            animation: spin 25s linear infinite;
-            margin-bottom: 1rem;
-        }
-
-        > h1 {
-            color: white;
-        }
-
-        > p {
-            color: white;
-            font-size: var(--font-large);
-            margin-bottom: 2rem;
-        }
+        font-size: var(--font-medium);
+      }
     }
+  }
+
+  > .right-section {
+    gap: 1rem;
+    background-color: var(--medium-red);
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+
+    > img {
+      /* width: 20rem; */
+      width: 50%;
+      height: auto;
+      animation: spin 25s linear infinite;
+      margin-bottom: 1rem;
+    }
+
+    > h1 {
+      color: white;
+    }
+
+    > p {
+      color: white;
+      font-size: var(--font-large);
+      margin-bottom: 2rem;
+    }
+  }
 }
 
 .right-animation {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transform: scale(2.1); /* Aumentá el número según necesites */
-    transform-origin: center;
-    pointer-events: none;
-  }
-  
-  
-  .right-section > *:not(.right-animation) {
-    position: relative;
-    z-index: 1;
-  }
-
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: scale(2.1); /* Aumentá el número según necesites */
+  transform-origin: center;
+  pointer-events: none;
 }
 
-@media (max-width: 768px) {  /* Cuando la pantalla sea menor a 768px */
-    .login-main-container {
-        flex-direction: column; /* Apila los elementos en columna */
-    }
+.right-section > *:not(.right-animation) {
+  position: relative;
+  z-index: 1;
+}
 
-    .right-section {
-        order: -1; /* Mueve la sección derecha abajo */
-    }
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  /* Cuando la pantalla sea menor a 768px */
+  .login-main-container {
+    flex-direction: column; /* Apila los elementos en columna */
+  }
+
+  .right-section {
+    order: -1; /* Mueve la sección derecha abajo */
+  }
 }
