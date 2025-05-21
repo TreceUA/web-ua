@@ -88,7 +88,7 @@ function MyAssets() {
           <>
             <ModelGrid
               publicaciones={publicaciones.slice(0, visibleCount)}
-              mostrarBotonEditar={true}
+              mostrarBotonEditar={false}
               mostrarBotonBorrar={true}
               onDelete={handleDeleteLocal}
             />
