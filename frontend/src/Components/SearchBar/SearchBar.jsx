@@ -226,6 +226,14 @@ export default function SearchBar() {
                     onChange={handleFormatChange}
                   /> .txt
                 </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    value=".zip"
+                    checked={selectedFormats.includes(".zip")}
+                    onChange={handleFormatChange}
+                  /> .zip
+                </label>
               </section>
 
               {/* Filtro de Tipos */}
