@@ -250,7 +250,7 @@ function Detail() {
                 key={index}
                 variant="grey-rounded"
                 label={cat}
-                
+                to={`/buscar?categories=${cat}`}
               />
             ))}
           </div>
